@@ -6,12 +6,12 @@ export const fetchRandomQuote = createAsyncThunk(
   'quote/fetchRandomQuote',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('https://zenquotes.io/api/random');
-      // Новый API возвращает объект с полями content и author
+      const response = await axios.get('https://quotes-random-a5kc.onrender.com/api/quotes/random');
+      // Новый API возвращает объект с полями q (quote) и a (author)
       const data = response.data;
       return {
-        text: data.content,
-        author: data.author,
+        text: data.q,
+        author: data.a,
       };
     } catch (error) {
       return rejectWithValue(error.message);
